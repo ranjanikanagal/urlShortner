@@ -1,7 +1,8 @@
 # urlShortner
 AI Assessment
 URL Shortener Service
-A production-shaped URL shortener built as an AI-assisted engineering exercise. The point of the exercise is the process around the code as much as the code itself — see docs/ for the requirements breakdown, task plan, AI usage log, architecture, trade-offs, and limitations that produced this build.
+A production-shaped URL shortener built as an AI-assisted engineering exercise. The point of the exercise is the process around the code as much as the code itself — 
+see docs/ for the requirements breakdown, task plan, AI usage log, architecture that produced this build.
 
 Stack
 Concern	Choice
@@ -14,8 +15,7 @@ API docs	springdoc-openapi / Swagger UI
 Metrics	Micrometer + Prometheus (/actuator/prometheus)
 Tests	JUnit 5 + Mockito + Spring @WebMvcTest slices
 Packaging	Docker / Docker Compose
-Kafka is not implemented — it was optional in the suggested stack and nothing in the requirements needs an event stream. See docs/REQUIREMENTS.md and docs/TRADEOFFS.md.
-
+Kafka is not implemented — it was optional in the suggested stack and nothing in the requirements needs an event stream. See docs/REQUIREMENTS.md
 Running it
 Option A — Docker Compose (everything)
 docker compose up --build
@@ -71,13 +71,10 @@ Configurable expiry, explicit or defaulted.
 Async analytics — click recording happens off the redirect's response path on a dedicated thread pool.
 Scheduled cleanup job purges expired mappings from Postgres and Redis.
 Health, logging, metrics, centralized exception handling — Actuator /actuator/health, SLF4J throughout the service/controller layers, Micrometer/Prometheus, and a @RestControllerAdvice.
-Full rationale for each of these, including alternatives considered and rejected, is in docs/TRADEOFFS.md.
 
 Project documentation
 docs/REQUIREMENTS.md — functional/non-functional requirements, assumptions, out-of-scope items
 docs/TASK_BREAKDOWN.md — how the work was decomposed and sequenced (greenfield build + brownfield enhancement pass)
 docs/ARCHITECTURE.md — component diagram and request-path walkthrough
 docs/AI_USAGE_LOG.md — where AI helped, what a human reviewed/changed and why
-docs/TRADEOFFS.md — decisions with a real alternative, and why the other option was passed on
-docs/LIMITATIONS.md — honest gaps vs. a genuine production deployment
 docs/TESTING.md — test strategy and what's covered vs. not
